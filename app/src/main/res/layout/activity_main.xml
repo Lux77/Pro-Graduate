@@ -9,8 +9,144 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.crown.shoppingonline.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <!--信息展示-->
+    <FrameLayout
+        android:id="@+id/main_show_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/split_line"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+    </FrameLayout>
+
+    <!--分割线-->
+    <View
+        android:id="@+id/split_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@+id/nav_bar_bottom"
+        android:background="@color/colorBgGray"
+        />
+
+    <!--底部导航栏-->
+    <LinearLayout
+        android:id="@+id/nav_bar_bottom"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:paddingTop="8dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"><!-- gravity="center" 设置元素在父容器里居中显示-->
+
+            <ImageView
+                android:id="@+id/home_btn"
+                android:clickable="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/nav_home"
+                />
+            <TextView
+                android:text="首页"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"><!-- gravity="center" 设置元素在父容器里居中显示-->
+
+            <ImageView
+                android:id="@+id/sea_btn"
+                android:clickable="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/nav_sea"
+                />
+            <TextView
+                android:text="海淘"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"><!-- gravity="center" 设置元素在父容器里居中显示-->
+
+            <ImageView
+                android:id="@+id/discover_btn"
+                android:clickable="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/nav_discover"
+                />
+            <TextView
+                android:text="发现"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"><!-- gravity="center" 设置元素在父容器里居中显示-->
+
+            <ImageView
+                android:id="@+id/cart_btn"
+                android:clickable="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/nav_cart"
+                />
+            <TextView
+                android:text="购物车"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"><!-- gravity="center" 设置元素在父容器里居中显示-->
+
+            <ImageView
+                android:id="@+id/self_btn"
+                android:clickable="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/nav_self"
+                />
+            <TextView
+                android:text="我的"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                />
+        </LinearLayout>
+    </LinearLayout>
 </RelativeLayout>
