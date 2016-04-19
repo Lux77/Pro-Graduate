@@ -26,6 +26,10 @@ public class LogHelper {
         log(tag, Log.INFO, null, messages);
     }
 
+    public static void e(String tag, Object... messages) {
+        log(tag, Log.ERROR, null, messages);
+    }
+
     public static void log(String tag, int level, Throwable t, Object... messages) {
         if(Log.isLoggable(tag, level)) {
             String message;

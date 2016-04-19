@@ -6,4 +6,7 @@
 
     <!--灰色-->
     <color name="colorBgGray">#CCCCCC</color>
+    <color name="colorMainStyle">#FF5000</color>
+
+    <color name="colorBg">#BBBBBB</color>
 </resources>

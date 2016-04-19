@@ -1,0 +1,52 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.viewfragment.UserinfoFragment">
+
+    <RelativeLayout
+        android:id="@+id/userInfoSettings"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorMainStyle"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true"
+        >
+        <Button
+            android:id="@+id/settings"
+            android:background="@color/colorMainStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="设置"
+            android:textColor="@color/colorBgGray"
+            android:textSize="20sp"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/userInfo"
+            android:layout_toStartOf="@+id/userInfo" />
+
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:id="@+id/notice_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/info_icon"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:background="@color/colorMainStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="#FF0000"/>
+        <TextView
+            android:id="@+id/usernameTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="用户名"/>
+    </LinearLayout>
+</LinearLayout>

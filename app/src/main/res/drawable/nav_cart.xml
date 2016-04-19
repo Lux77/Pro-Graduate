@@ -7,5 +7,6 @@
   <item android:state_enabled="true" android:state_focused="true" android:state_pressed="false"
       android:drawable="@mipmap/nav_cart_default"/>
   <item android:state_enabled="true" android:state_pressed="true" android:drawable="@mipmap/nav_cart_clicked"/>
+  <item android:state_enabled="true" android:state_checked="true" android:drawable="@mipmap/nav_cart_clicked"/>
   <item android:drawable="@mipmap/nav_cart_default"/>
 </selector>
