@@ -26,9 +26,9 @@ public class UserSharedPreferences {
         try {
             preferences = context.getSharedPreferences(USER_FILE, 0);
             String json = preferences.getString("user_json", "");
-            LogHelper.e(TAG, "json : " + json);
             if(!json.equals(""))
                 return new Gson().fromJson(json, User.class);
+            return null;
         } catch (Exception e) {
             e.printStackTrace();
         }

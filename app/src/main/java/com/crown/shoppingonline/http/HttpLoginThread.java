@@ -1,8 +1,9 @@
 package com.crown.shoppingonline.http;
 
 import android.content.Context;
+import android.os.Handler;
+import android.widget.Toast;
 
-import com.crown.shoppingonline.bean.User;
 import com.crown.shoppingonline.utils.LogHelper;
 import com.crown.shoppingonline.utils.UserSharedPreferences;
 
@@ -26,6 +27,8 @@ public class HttpLoginThread extends Thread {
 
     private Context mContext;
 
+    private Handler handler = new Handler();
+
     public HttpLoginThread(Context context, String url, String email, String password) {
         mContext = context;
         mUrl = url;
@@ -35,21 +38,31 @@ public class HttpLoginThread extends Thread {
 
     public void doGet() {
         mUrl = mUrl + "?email=" + mEmail + "&password=" + mPassword;
+        LogHelper.e("URL : ", mUrl);
         try {
             URL httpUrl = new URL(mUrl);
             HttpURLConnection conn = (HttpURLConnection) httpUrl.openConnection();
             conn.setRequestMethod("GET");
             conn.setReadTimeout(5 * 1000);
             BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            StringBuffer json = new StringBuffer();
+            StringBuffer jsonSb = new StringBuffer();
             String str = null;
-            while((str = reader.readLine()) != null) {
-                json.append(str);
+            while ((str = reader.readLine()) != null) {
+                jsonSb.append(str);
             }
-            UserSharedPreferences.saveUserPreferences(mContext, json.toString());
-            LogHelper.e(TAG, "------------- : " + json.toString() + " ---------------");
-            User user = UserSharedPreferences.getUserPreferences(mContext);
-            LogHelper.e(TAG, "---------- : " + user + " ---------------------");
+            String json = jsonSb.toString();
+            LogHelper.e("取出的数据是 ：", json);
+            if(json.length() > 0) {
+                UserSharedPreferences.saveUserPreferences(mContext, json);
+                LogHelper.e("进错地方了", "ee");
+
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(mContext, "账号或密码错误,请重试！", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {

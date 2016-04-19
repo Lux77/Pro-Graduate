@@ -9,6 +9,8 @@ import android.support.v4.view.ViewPager;
 import com.crown.shoppingonline.R;
 import com.crown.shoppingonline.ui.customview.ViewPagerIndictor;
 import com.crown.shoppingonline.ui.customview.VpSimpleFragment;
+import com.crown.shoppingonline.ui.viewfragment.LoginFragment;
+import com.crown.shoppingonline.ui.viewfragment.RegisterFragment;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,10 +24,12 @@ public class LoginActivity extends FragmentActivity {
     private List<VpSimpleFragment> mContents = new ArrayList<>();
     private FragmentPagerAdapter mAdapter;
 
+    private Fragment loginFragment;
+    private Fragment registerFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_register2);
+        setContentView(R.layout.activity_login_register);
 
         initViews();
         initDatas();
@@ -67,7 +71,20 @@ public class LoginActivity extends FragmentActivity {
         mAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
-                return mContents.get(position);
+                switch (position) {
+                    case 0:
+                        if(loginFragment == null) {
+                            loginFragment = new LoginFragment();
+                        }
+                        return loginFragment;
+                    case 1:
+                        if(registerFragment == null) {
+                            registerFragment = new RegisterFragment();
+                        }
+                        return registerFragment;
+                    default:
+                        return mContents.get(position);
+                }
             }
 
             @Override

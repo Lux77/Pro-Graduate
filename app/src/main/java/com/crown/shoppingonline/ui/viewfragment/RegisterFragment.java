@@ -8,11 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.crown.shoppingonline.R;
+import com.crown.shoppingonline.ui.customview.VpSimpleFragment;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class RegisterFragment extends Fragment {
+public class RegisterFragment extends VpSimpleFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
