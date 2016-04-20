@@ -16,11 +16,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class LoginActivity extends FragmentActivity {
+public class UserActivity extends FragmentActivity {
 
     private ViewPager mViewPager;
     private ViewPagerIndictor mIndicator;
-    private List<String> mTitles = Arrays.asList("登录", "注册", "登录3", "注册4", "登录5", "注册6");
+//    private List<String> mTitles = Arrays.asList("登录", "注册", "登录3", "注册4", "登录5", "注册6");
+    private List<String> mTitles = Arrays.asList("登录", "注册");
     private List<VpSimpleFragment> mContents = new ArrayList<>();
     private FragmentPagerAdapter mAdapter;
 
@@ -34,7 +35,7 @@ public class LoginActivity extends FragmentActivity {
         initViews();
         initDatas();
 
-        mIndicator.setVisibleTabCount(3);
+        mIndicator.setVisibleTabCount(2);
         mIndicator.setTabItemTitles(mTitles);
 
         mViewPager.setAdapter(mAdapter);

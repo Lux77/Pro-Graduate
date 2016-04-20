@@ -1,9 +1,11 @@
 package com.crown.shoppingonline.http;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Handler;
 import android.widget.Toast;
 
+import com.crown.shoppingonline.MainActivity;
 import com.crown.shoppingonline.utils.LogHelper;
 import com.crown.shoppingonline.utils.UserSharedPreferences;
 
@@ -50,12 +52,17 @@ public class HttpLoginThread extends Thread {
             while ((str = reader.readLine()) != null) {
                 jsonSb.append(str);
             }
-            String json = jsonSb.toString();
+            final String json = jsonSb.toString();
             LogHelper.e("取出的数据是 ：", json);
-            if(json.length() > 0) {
-                UserSharedPreferences.saveUserPreferences(mContext, json);
-                LogHelper.e("进错地方了", "ee");
 
+            //有没有更好的实现方式
+            if(json.length() > 4) {
+                UserSharedPreferences.saveUserPreferences(mContext, json);
+                Intent i = new Intent(mContext, MainActivity.class);
+                i.putExtra("layout_id", 3);
+                mContext.startActivity(i);
+            }
+            else {
                 handler.post(new Runnable() {
                     @Override
                     public void run() {

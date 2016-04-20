@@ -10,7 +10,7 @@ import android.widget.ImageView;
 
 import com.crown.shoppingonline.dao.UserDao;
 import com.crown.shoppingonline.dao.daoImpl.UserDaoImpl;
-import com.crown.shoppingonline.ui.LoginActivity;
+import com.crown.shoppingonline.ui.UserActivity;
 import com.crown.shoppingonline.ui.viewfragment.CartFragment;
 import com.crown.shoppingonline.ui.viewfragment.HomeFragment;
 import com.crown.shoppingonline.ui.viewfragment.SeaFragment;
@@ -91,7 +91,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 navBarState(3);
                 UserDao userDao = new UserDaoImpl(getApplicationContext());
                 if(userDao.isLogin() == null) {
-                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    Intent intent = new Intent(MainActivity.this, UserActivity.class);
                     startActivity(intent);
                 }
                 else {
