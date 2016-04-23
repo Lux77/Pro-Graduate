@@ -8,16 +8,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.Toast;
 
 import com.crown.shoppingonline.R;
+import com.crown.shoppingonline.http.HttpProductSearchThread;
 import com.crown.shoppingonline.ui.customview.AutoScrollViewPager;
 import com.crown.shoppingonline.ui.myadapter.ImageAdapter;
 import com.crown.shoppingonline.ui.myadapter.ImagePagerAdapter;
 import com.crown.shoppingonline.utils.ListUtils;
+import com.crown.shoppingonline.utils.LogHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,9 +30,7 @@ public class HomeFragment extends Fragment {
 
     private AutoScrollViewPager viewPager;
     private GridView gridView;
-    //private TextView indexText;
-
-    private Button innerViewPagerDemo;
+    private EditText keyWordEt;
 
     private List<Integer> imageIdList;
     private List<Integer> list;
@@ -57,19 +56,16 @@ public class HomeFragment extends Fragment {
         gridView = (GridView) rootView.findViewById(R.id.grid_view);
         initGridView();
         keyWordEt = (EditText) rootView.findViewById(R.id.search_key_word);
-        rootView.findViewById(R.id.search_btn).setOnClickListener(searchListener);
+        rootView.findViewById(R.id.search_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String keyword = keyWordEt.getText().toString();
+                LogHelper.e("marsh : ", keyword);
+                new HttpProductSearchThread(getActivity(), keyword).start();
+            }
+        });
         return rootView;
     }
-
-    private EditText keyWordEt;
-    private View.OnClickListener searchListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            String keyWord = keyWordEt.getText().toString();
-            //TODO: query database for searched product info
-
-        }
-    };
 
     public void initViewPager() {
         imageIdList = new ArrayList<Integer>();
