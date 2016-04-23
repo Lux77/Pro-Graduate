@@ -6,7 +6,7 @@ import android.os.Handler;
 import android.view.Gravity;
 import android.widget.Toast;
 
-import com.crown.shoppingonline.bean.RegisterResult;
+import com.crown.shoppingonline.bean.json.RegisterResult;
 import com.crown.shoppingonline.ui.UserActivity;
 import com.crown.shoppingonline.utils.Config;
 import com.google.gson.Gson;

@@ -9,4 +9,6 @@ public class Config {
 
     public static final String URL_REGISTER = "http://192.168.32.2:8080/AndroidServer/RegisterServlet";
 
+    //TODO: URL_PRODUCT_SEARCH
+    public static final String URL_PRODUCT_SEARCH = "";
 }

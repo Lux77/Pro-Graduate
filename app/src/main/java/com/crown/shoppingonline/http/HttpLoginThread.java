@@ -6,8 +6,10 @@ import android.os.Handler;
 import android.widget.Toast;
 
 import com.crown.shoppingonline.MainActivity;
+import com.crown.shoppingonline.bean.json.LoginResult;
 import com.crown.shoppingonline.utils.LogHelper;
 import com.crown.shoppingonline.utils.UserSharedPreferences;
+import com.google.gson.Gson;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -52,14 +54,12 @@ public class HttpLoginThread extends Thread {
             while ((str = reader.readLine()) != null) {
                 jsonSb.append(str);
             }
-            final String json = jsonSb.toString();
+            String json = jsonSb.toString();
             LogHelper.e("取出的数据是 ：", json);
-
-            //有没有更好的实现方式
-            if(json.length() > 4) {
+            LoginResult lr = new Gson().fromJson(json, LoginResult.class);
+            if(lr.getResultCode() == 1) {
                 UserSharedPreferences.saveUserPreferences(mContext, json);
                 Intent i = new Intent(mContext, MainActivity.class);
-                i.putExtra("layout_id", 3);
                 mContext.startActivity(i);
             }
             else {

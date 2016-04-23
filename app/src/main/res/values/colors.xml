@@ -9,4 +9,7 @@
     <color name="colorMainStyle">#FF5000</color>
 
     <color name="colorBg">#BBBBBB</color>
+
+    <color name="dark">#FF222222</color>
+    <color name="light">#FFEEEEEE</color>
 </resources>

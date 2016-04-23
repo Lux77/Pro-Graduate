@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.Toast;
 
@@ -55,9 +56,20 @@ public class HomeFragment extends Fragment {
         //TODO:GridView add listener
         gridView = (GridView) rootView.findViewById(R.id.grid_view);
         initGridView();
-
+        keyWordEt = (EditText) rootView.findViewById(R.id.search_key_word);
+        rootView.findViewById(R.id.search_btn).setOnClickListener(searchListener);
         return rootView;
     }
+
+    private EditText keyWordEt;
+    private View.OnClickListener searchListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            String keyWord = keyWordEt.getText().toString();
+            //TODO: query database for searched product info
+
+        }
+    };
 
     public void initViewPager() {
         imageIdList = new ArrayList<Integer>();

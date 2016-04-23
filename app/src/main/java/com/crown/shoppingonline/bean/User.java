@@ -8,6 +8,8 @@ public class User {
     private String username;
     private String password;
     private String email;
+    private int rank;
+    private int userType;
     private int userState;//默认为1 表示该用户是活动的
 
     public int getUserId() {
@@ -40,6 +42,22 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public int getRank() {
+        return rank;
+    }
+
+    public void setRank(int rank) {
+        this.rank = rank;
+    }
+
+    public int getUserType() {
+        return userType;
+    }
+
+    public void setUserType(int userType) {
+        this.userType = userType;
     }
 
     public int getUserState() {

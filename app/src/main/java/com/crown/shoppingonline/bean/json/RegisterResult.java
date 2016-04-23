@@ -1,4 +1,4 @@
-package com.crown.shoppingonline.bean;
+package com.crown.shoppingonline.bean.json;
 
 /**
  * Created by Crown on 2016/4/20.
