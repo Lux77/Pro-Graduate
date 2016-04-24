@@ -6,6 +6,13 @@
     android:orientation="vertical"
     tools:context=".ui.viewfragment.UserinfoFragment">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:text="用户信息"
+        android:textSize="24sp"
+        android:gravity="center"
+        />
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -15,8 +22,8 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_marginTop="10dp"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
+            android:layout_width="126dp"
+            android:layout_height="126dp"
             android:layout_centerInParent="true"
             android:src="@mipmap/hugh"
             app:civ_border_width="2dp"
@@ -57,6 +64,12 @@
                 android:layout_height="wrap_content"
                 android:src="@mipmap/arrow_expend_right"/>
         </LinearLayout>
+
+        <View
+            android:layout_marginTop="5dp"
+            android:background="@color/colorBg"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
 
         <LinearLayout
             android:layout_marginTop="5dp"

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -32,6 +33,18 @@ public class ProductsShowActivity extends AppCompatActivity {
         searchList = (ListView) findViewById(R.id.search_info_show);
 
         searchList.setAdapter(new SearchResultAdapter());
+
+        searchList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Product product = products.get(position);
+                Intent intent = new Intent(ProductsShowActivity.this, ProductInfoShowActivity.class);
+//                Bundle bundle = new Bundle();
+                intent.putExtra("product", product);
+//                bundle.putParcelable("product", product);
+                startActivity(intent);
+            }
+        });
     }
 
     public void initData() {

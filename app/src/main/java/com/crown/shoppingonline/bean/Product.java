@@ -71,6 +71,24 @@ public class Product implements Parcelable {
     private double pDiscount;
     private String pImgName;
     private int pShopId;
+    private String pDiscription;
+    private String pArea;
+
+    public String getpArea() {
+        return pArea;
+    }
+
+    public void setpArea(String pArea) {
+        this.pArea = pArea;
+    }
+
+    public String getpDiscription() {
+        return pDiscription;
+    }
+
+    public void setpDiscription(String pDiscription) {
+        this.pDiscription = pDiscription;
+    }
 
     @Override
     public int describeContents() {
@@ -86,6 +104,8 @@ public class Product implements Parcelable {
         dest.writeDouble(getpDiscount());
         dest.writeString(getpImgName());
         dest.writeInt(getpShopId());
+        dest.writeString(getpDiscription());
+        dest.writeString(pArea);
     }
 
     public static final Parcelable.Creator<Product> CREATOR = new Parcelable.Creator<Product>() {
@@ -109,5 +129,7 @@ public class Product implements Parcelable {
         this.pDiscount = source.readDouble();
         this.pImgName = source.readString();
         this.pShopId = source.readInt();
+        this.pDiscription = source.readString();
+        this.pArea = source.readString();
     }
 }

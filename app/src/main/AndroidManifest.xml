@@ -25,7 +25,8 @@
         <activity
             android:name=".ui.ProductsShowActivity"
             android:label="@string/title_activity_products_show"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ui.ProductInfoShowActivity"></activity>
     </application>
 
 </manifest>
