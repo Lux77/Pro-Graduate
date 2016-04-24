@@ -1,2 +1,3 @@
 # Pro-Graduate
-# Online shopping clients.
+
+#    Online shopping.
