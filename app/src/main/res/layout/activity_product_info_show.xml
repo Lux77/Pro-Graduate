@@ -30,12 +30,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <com.crown.shoppingonline.ui.customview.AutoScrollViewPager
-                    android:id="@+id/product_view_page"
+                <!-- TODO:网络下载图片资源 在ViewPager中展示-->
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/view_pager"
                     android:layout_width="match_parent"
                     android:layout_height="360dp">
 
-                </com.crown.shoppingonline.ui.customview.AutoScrollViewPager>
+                </android.support.v4.view.ViewPager>
 
                 <View
                     android:layout_width="match_parent"

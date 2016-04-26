@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.crown.shoppingonline.bean.User;
+import com.crown.shoppingonline.bean.json.LoginResult;
 import com.google.gson.Gson;
 
 /**
@@ -27,7 +28,7 @@ public class UserSharedPreferences {
             preferences = context.getSharedPreferences(USER_FILE, 0);
             String json = preferences.getString("user_json", "");
             if(!json.equals(""))
-                return new Gson().fromJson(json, User.class);
+                return (new Gson().fromJson(json, LoginResult.class)).getUser();
             return null;
         } catch (Exception e) {
             e.printStackTrace();

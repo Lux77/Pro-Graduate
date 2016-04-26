@@ -17,36 +17,35 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
 
 /**
- * Created by Crown on 2016/4/20.
+ * Created by Crown on 2016/4/25.
  */
-public class HttpRegisterThread extends Thread {
+public class HttpCreateOrderThread extends Thread {
 
     private Context mContext;
+    private int uid;
+    private int pid;
+
     private Handler handler = new Handler();
 
-    private String username;
-    private String email;
-    private String password;
-
-    public HttpRegisterThread(Context context, String username, String email, String password) {
+    public HttpCreateOrderThread(Context context, int userId, int productId) {
         mContext = context;
-        this.username = username;
-        this.email = email;
-        this.password = password;
+        uid = userId;
+        pid = productId;
     }
 
-    public void doPost() {
+    private void doPost() {
+        String url = Config.URL_CREATE_ORDER;
         try {
-            String url = Config.URL_REGISTER;
             URL httpUrl = new URL(url);
             HttpURLConnection conn = (HttpURLConnection) httpUrl.openConnection();
             conn.setRequestMethod("POST");
             conn.setReadTimeout(5 * 1000);
-            String content = "username="+username+"&email="+email+"&password="+password;
+
+
+            String content = "userId="+uid+"&productId="+pid;
             OutputStream outputStream = conn.getOutputStream();
             outputStream.write(content.getBytes());
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -56,12 +55,12 @@ public class HttpRegisterThread extends Thread {
                 jsonSb.append(str);
             }
             String json = jsonSb.toString();
-            JsonResult regR = new Gson().fromJson(json, JsonResult.class);
-            if(regR.getResultCode() == 1) {
+            JsonResult cor = new Gson().fromJson(json, JsonResult.class);
+            if(cor.getResultCode() == 1) {
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-                        Toast toast = Toast.makeText(mContext, "注册成功!", Toast.LENGTH_SHORT);
+                        Toast toast = Toast.makeText(mContext, "成功加入购物车!", Toast.LENGTH_SHORT);
                         toast.setGravity(Gravity.CENTER, 0, 0);
                         toast.show();
                         Intent intent = new Intent(mContext, UserActivity.class);
@@ -73,16 +72,13 @@ public class HttpRegisterThread extends Thread {
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-                        Toast toast = Toast.makeText(mContext, "注册失败,请重试!", Toast.LENGTH_SHORT);
+                        Toast toast = Toast.makeText(mContext, "加入购物车失败,请重试!", Toast.LENGTH_SHORT);
                         toast.setGravity(Gravity.CENTER, 0, 0);
                         toast.show();
                     }
                 });
             }
-
         } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (ProtocolException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();

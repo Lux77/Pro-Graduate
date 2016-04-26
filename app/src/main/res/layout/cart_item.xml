@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:background="@color/title"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <TextView
+            android:id="@+id/shop_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:text="云腾图书"
+            android:layout_marginLeft="6dp"
+            android:textSize="26sp"
+            android:textColor="#FF555555"/>
+
+        <ImageView
+            android:id="@+id/delete_item_from_cart"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:src="@mipmap/del_icon_normal"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="6dp"/>
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp">
+
+        <ImageView
+            android:id="@+id/product_img"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:src="@mipmap/ic_launcher"/>
+
+        <LinearLayout
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/product_desc"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="这本书不错，是你学习编程的必备指南，指引你走上成神之路"
+                android:textSize="16sp"
+                android:layout_marginTop="5dp"/>
+
+            <TextView
+                android:id="@+id/product_pri"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text=" ￥60"
+                android:textSize="26sp"
+                />
+
+            <TextView
+                android:id="@+id/product_cnt"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="*1"
+                android:textSize="24sp"
+                android:layout_marginLeft="40dp"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

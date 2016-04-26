@@ -34,6 +34,8 @@ public class HomeFragment extends Fragment {
 
     private List<Integer> imageIdList;
     private List<Integer> list;
+
+    private int cnt = 0;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -60,7 +62,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 String keyword = keyWordEt.getText().toString();
-                LogHelper.e("marsh : ", keyword);
+                LogHelper.e("marsh : ", (cnt++) +"  " +  keyword);
                 new HttpProductSearchThread(getActivity(), keyword).start();
             }
         });

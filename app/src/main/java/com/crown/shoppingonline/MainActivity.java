@@ -64,6 +64,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 break;
             case R.id.sea_btn:
                 navBarState(1);
+                LogHelper.e("Sea", "这里是可以的");
                 if(seaFragment == null) {
                     seaFragment = new SeaFragment();
                     activeFragment = seaFragment;
@@ -76,6 +77,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 break;
 
             case R.id.cart_btn:
+                LogHelper.e("Cart", "这里是可以的");
                 navBarState(2);
                 if(cartFragment == null) {
                     cartFragment = new CartFragment();
