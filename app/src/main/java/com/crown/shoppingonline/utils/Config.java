@@ -13,10 +13,11 @@ public class Config {
 
     public static final String URL_IMG = "http://192.168.32.2:8080/AndroidServer/images";
 
-    //TODO:
     public static final String URL_PUT_INTO_CART = "http://192.168.32.2:8080/AndroidServer/PutInfoCartServlet";
 
     public static final String URL_GET_CART = "http://192.168.32.2:8080/AndroidServer/GetCartServlet";
 
     public static final String URL_CREATE_ORDER = "http://192.168.32.2:8080/AndroidServer/";
+
+    public static final String URL_GET_Hot = "http://192.168.32.2:8080/AndroidServer/GetHotProductServlet";
 }

@@ -13,10 +13,10 @@
         android:layout_height="50dp" />
 
     <ListView
-        android:background="@drawable/type"
-        android:divider="@null"
-        android:dividerHeight="10dp"
-        android:id="@+id/productInfoListView"
+
+        android:divider="@color/colorBg"
+        android:dividerHeight="3dp"
+        android:id="@+id/hot_product_list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         

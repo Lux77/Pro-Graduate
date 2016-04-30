@@ -12,6 +12,8 @@ import com.crown.shoppingonline.R;
 import com.crown.shoppingonline.bean.Product;
 import com.crown.shoppingonline.bean.User;
 import com.crown.shoppingonline.http.HttpPutIntoCartThread;
+import com.crown.shoppingonline.http.ImageLoader;
+import com.crown.shoppingonline.utils.Config;
 import com.crown.shoppingonline.utils.UserSharedPreferences;
 
 public class ProductInfoShowActivity extends AppCompatActivity {
@@ -25,6 +27,8 @@ public class ProductInfoShowActivity extends AppCompatActivity {
 
     private ImageView put;           //加入购物车
     private ImageView buy;           //立即购买
+
+    private ImageView proImgS;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +55,12 @@ public class ProductInfoShowActivity extends AppCompatActivity {
         priceTv.setText("￥:" + product.getpPrice());
         discountTv.setText("" + product.getpDiscount());
         areaTv.setText("" + product.getpArea());
+
+        String url = null;
+        if((url = product.getpImgName()) != null) {
+            url = Config.URL_IMG + "/" + url;
+            new ImageLoader(proImgS).execute(url);
+        }
     }
 
     private void initView() {
@@ -60,6 +70,7 @@ public class ProductInfoShowActivity extends AppCompatActivity {
         areaTv = (TextView) findViewById(R.id.product_area);
         put = (ImageView) findViewById(R.id.put_into_cart);
         buy = (ImageView) findViewById(R.id.buy_now);
+        proImgS = (ImageView) findViewById(R.id.pro_img_s);
     }
 
     private void initData() {

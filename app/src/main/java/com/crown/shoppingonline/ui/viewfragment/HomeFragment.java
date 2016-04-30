@@ -18,7 +18,6 @@ import com.crown.shoppingonline.ui.customview.AutoScrollViewPager;
 import com.crown.shoppingonline.ui.myadapter.ImageAdapter;
 import com.crown.shoppingonline.ui.myadapter.ImagePagerAdapter;
 import com.crown.shoppingonline.utils.ListUtils;
-import com.crown.shoppingonline.utils.LogHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,12 +34,10 @@ public class HomeFragment extends Fragment {
     private List<Integer> imageIdList;
     private List<Integer> list;
 
-    private int cnt = 0;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = LayoutInflater.from(getActivity()).inflate(R.layout.home_fragment, null);
-        //View rootView = inflater.inflate(R.layout.home_fragment, container, false);
 
         //TODO：二维码扫描信息
         rootView.findViewById(R.id.qrCode).setOnClickListener(new View.OnClickListener() {
@@ -62,7 +59,6 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 String keyword = keyWordEt.getText().toString();
-                LogHelper.e("marsh : ", (cnt++) +"  " +  keyword);
                 new HttpProductSearchThread(getActivity(), keyword).start();
             }
         });
@@ -88,8 +84,6 @@ public class HomeFragment extends Fragment {
 
         @Override
         public void onPageSelected(int position) {
-            //indexText.setText(new StringBuilder().append((position) % ListUtils.getSize(imageIdList) + 1).append("/")
-            //        .append(ListUtils.getSize(imageIdList)));
         }
 
         @Override
