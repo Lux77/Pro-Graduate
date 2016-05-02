@@ -2,11 +2,13 @@ package com.crown.shoppingonline;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.crown.shoppingonline.dao.UserDao;
 import com.crown.shoppingonline.dao.daoImpl.UserDaoImpl;
@@ -16,8 +18,12 @@ import com.crown.shoppingonline.ui.viewfragment.HomeFragment;
 import com.crown.shoppingonline.ui.viewfragment.SeaFragment;
 import com.crown.shoppingonline.ui.viewfragment.UserinfoFragment;
 import com.crown.shoppingonline.utils.LogHelper;
+import com.crown.shoppingonline.utils.NetworkState;
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener {
+
+    private NetworkState networkState = new NetworkState(this);
+    private Handler handler = new Handler();
 
     private static final String TAG = LogHelper.makeLogTag(MainActivity.class);
 
@@ -62,26 +68,39 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 break;
             case R.id.sea_btn:
                 navBarState(1);
-                if(seaFragment == null) {
-                    seaFragment = new SeaFragment();
-                    activeFragment = seaFragment;
-                    //addFragment(seaFragment);
-                    replaceFragment(seaFragment);
+                if (networkState.getNetworkState()) {
+                    if (seaFragment == null) {
+                        seaFragment = new SeaFragment();
+                        activeFragment = seaFragment;
+                        //addFragment(seaFragment);
+                        replaceFragment(seaFragment);
+                    } else {
+                        replaceFragment(seaFragment);
+                    }
                 }
                 else {
-                    replaceFragment(seaFragment);
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(MainActivity.this, "当前无网络连接,海淘不可用！", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }
                 break;
 
             case R.id.cart_btn:
                 navBarState(2);
-                if(cartFragment == null) {
-                    cartFragment = new CartFragment();
-                    activeFragment = cartFragment;
-                    replaceFragment(cartFragment);
+                if (networkState.getNetworkState()) {
+                    if (cartFragment == null) {
+                        cartFragment = new CartFragment();
+                        activeFragment = cartFragment;
+                        replaceFragment(cartFragment);
+                    } else {
+                        replaceFragment(cartFragment);
+                    }
                 }
                 else {
-                    replaceFragment(cartFragment);
+                    Toast.makeText(MainActivity.this, "当前无网络连接，购物车不可用！", Toast.LENGTH_LONG).show();
                 }
                 break;
             case R.id.self_btn:
